@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31612.314
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GematriaForTruth", "GematriaForTruth\GematriaForTruth.csproj", "{F0A03B3D-06D1-4B70-A168-4679C18F2FFB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator Example", "Calculator Example\Calculator Example.csproj", "{809FA570-D8D7-4A56-9593-DE83F6E930B9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F0A03B3D-06D1-4B70-A168-4679C18F2FFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0A03B3D-06D1-4B70-A168-4679C18F2FFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0A03B3D-06D1-4B70-A168-4679C18F2FFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0A03B3D-06D1-4B70-A168-4679C18F2FFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{809FA570-D8D7-4A56-9593-DE83F6E930B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{809FA570-D8D7-4A56-9593-DE83F6E930B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{809FA570-D8D7-4A56-9593-DE83F6E930B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{809FA570-D8D7-4A56-9593-DE83F6E930B9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9EED2B0D-3CE8-4FB0-B838-A3D7030835F1}
+	EndGlobalSection
+EndGlobal

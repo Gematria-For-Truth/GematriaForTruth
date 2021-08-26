@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Copyright>Copyright (c) 2020 Gematria Tools</Copyright>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="API\Factory\" />
+    <Folder Include="API\Cipher\" />
+    <Folder Include="API\Config\" />
+    <Folder Include="API\DataStructures\" />
+    <Folder Include="API\Util\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="GematriaForTruthResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>GematriaForTruthResources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="GematriaForTruthResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>GematriaForTruthResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>
