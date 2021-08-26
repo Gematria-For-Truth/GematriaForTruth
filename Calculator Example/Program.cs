@@ -10,30 +10,29 @@ namespace Gematria_Calculator
     {
         static void Main()
         {
-            ConsoleColor startConsoleColor = Console.ForegroundColor;
-            GematriaCipher [] ciphers;
-
-            //prompt the user for the phrase
-            Console.Write("Enter Word, Phrase, or Number(s): ");
+            //prompt the user fir the phrase
+            Console.Write("Enter Word, Phrases, or Number(s): ");
             string phrase = Console.ReadLine();
 
             if (phrase.Length == 0)
             {
-                Console.WriteLine("Error: You did not enter a valid word, phrase, and or number.");
-                Console.WriteLine("Press a key to exit.");
+                Console.WriteLine("Invalid Phrase");
+                Console.WriteLine("Hit a key to exit.");
                 Console.ReadKey();
                 return;
             }
 
-            //prompt the user for the cipher selection
+            //prompt the user fir tge cipher selection
             Console.Write("Cipher Selection[all, base, enabled]: ");
             string cipherSelection = Console.ReadLine();
+
+            GematriaCipher[] ciphers;
 
             if (cipherSelection.ToLower() == "all")
             {
                 ciphers = GematriaFactory.Instance().GetGematriaCiphers();
             }
-            else if(cipherSelection.ToLower() == "base")
+            else if (cipherSelection.ToLower() == "base")
             {
                 ciphers = GematriaFactory.Instance().GetBaseCiphers();
             }
@@ -43,17 +42,15 @@ namespace Gematria_Calculator
             }
             else
             {
-                Console.WriteLine("Error: You did not enter a valid gematria ciphers selection.");
-                Console.WriteLine("Press a key to exit.");
+                Console.Write("Error: You did not enter a valid Cipher Selection.");
+                Console.WriteLine("Hit a key to exit.");
                 Console.ReadKey();
                 return;
             }
 
-            bool pauseBetweenCipherData;
-
-            Console.Write("Pause between cipher value data[yes, no]: ");
+            Console.Write("Pause between cipher value data[yes, no]:");
             string pauseSelection = Console.ReadLine();
-            Console.WriteLine("");
+            bool pauseBetweenCipherData;
 
             if (pauseSelection.ToLower() == "yes")
             {
@@ -66,84 +63,108 @@ namespace Gematria_Calculator
             else
             {
                 Console.WriteLine("Error: You did not enter a valid selection.");
-                Console.WriteLine("Press a key to exit.");
+                Console.WriteLine("Hit a key to exit.");
                 Console.ReadKey();
                 return;
             }
 
+            //loop through the selected ciphers
             foreach (GematriaCipher cipher in ciphers)
             {
+                //get the value for this ciphers phrase.
                 long gematriaValue = cipher.Decode(phrase);
+
+                //build a string with the phrase, value, and the cipher name
                 string valueString = phrase + " = " + gematriaValue + "(" + cipher.Name + ")";
 
-                //check for match values
-                string matchValueString = string.Empty;
+                //check to see if the value matches any of the defined match values.
                 MatchValue[] enabledMatchValues = GematriaFactory.Instance().GetEnabledMatchValues();
+                string matchValueString = string.Empty;
 
-                foreach(MatchValue matchValue in enabledMatchValues)
+                //loop through each match value and check for a match of value
+                foreach (MatchValue matchValue in enabledMatchValues)
                 {
-                    if(matchValue.Value == gematriaValue)
+                    //if our match value is the gematria value, we have a match
+                    if (matchValue.Value == gematriaValue)
                     {
+                        //build a string to dispay the match value
                         matchValueString = "MATCH VALUE: " + matchValue.Comment;
+                        //all done we found our match, break out of the current loops of match values
                         break;
                     }
                 }
 
+                //let's see if our gematria value is a special complex math number.
                 string complexMathString = string.Empty;
-
-                if (NumberHelper.IsPrime((int)gematriaValue))
+                //prime
+                if (NumberHelper.IsPrime(gematriaValue) == true)
                 {
-                    PrimeNumberDictionary.Instance().GetNumberIndex(gematriaValue);
+                    //our number is a prime number, now get the index from the dictionary utility
                     int primeIndex = PrimeNumberDictionary.Instance().GetNumberIndex(gematriaValue);
-                    complexMathString += primeIndex + WrittenNumerics.GetRankSuffix(gematriaValue) + " Prime";
+                    //build our string of complex numbers with a format of prime-index followed by ranksuffix(nd,th,rd,ect) and " Prime"
+                    complexMathString += primeIndex + WrittenNumerics.GetRankSuffix(primeIndex) + " Prime";
                 }
-                if (NumberHelper.IsTriangular((int)gematriaValue))
+                //Triangular
+                if (NumberHelper.IsTriangular(gematriaValue) == true)
                 {
-                    complexMathString += complexMathString.Length > 0 ? Environment.NewLine : ""; 
-                    int trigValue = TriangularNumberDictionary.Instance().GetNumberIndex(gematriaValue);
-                    complexMathString += trigValue + WrittenNumerics.GetRankSuffix(gematriaValue) +  " Triangular";
+                    //if the complexMathString was used previously, we are going to want a new line
+                    complexMathString += complexMathString.Length > 0 ? Environment.NewLine : "";
+                    int triangularIndex = TriangularNumberDictionary.Instance().GetNumberIndex(gematriaValue);
+                    complexMathString += triangularIndex + WrittenNumerics.GetRankSuffix(triangularIndex) + " Triangular";
                 }
-                if (NumberHelper.IsFibonacci((int)gematriaValue))
+                //Fibonacci
+                if (NumberHelper.IsFibonacci(gematriaValue) == true)
                 {
                     complexMathString += complexMathString.Length > 0 ? Environment.NewLine : "";
-                    int fibValue = FibonacciNumberDictionary.Instance().GetNumberIndex(gematriaValue);
-                    complexMathString += fibValue + WrittenNumerics.GetRankSuffix(gematriaValue) + " Fibonacci";
+                    int fibonacciIndex = FibonacciNumberDictionary.Instance().GetNumberIndex(gematriaValue);
+                    complexMathString += fibonacciIndex + WrittenNumerics.GetRankSuffix(fibonacciIndex) + " Fibonacci";
                 }
-                if (NumberHelper.IsSquareRoot((int)gematriaValue))
+                //square Root
+                if (NumberHelper.IsSquareRoot(gematriaValue) == true)
                 {
                     complexMathString += complexMathString.Length > 0 ? Environment.NewLine : "";
-                    long sqrtValue = NumberHelper.GetSquareRootOf(gematriaValue);
-                    complexMathString += "Square Root " + sqrtValue;
+                    long squareRootValue = NumberHelper.GetSquareRootOf(gematriaValue);
+                    complexMathString += "Square Root " + squareRootValue;
                 }
-                if (NumberHelper.IsPerfect((int)gematriaValue))
+                //perfect number
+                if (NumberHelper.IsPerfect(gematriaValue) == true)
                 {
                     complexMathString += complexMathString.Length > 0 ? Environment.NewLine : "";
                     complexMathString += "Perfect Number";
                 }
 
-                //write the data
+                //write the data we have accumulated for this cipher / value
+
+                //first the value string
                 Console.WriteLine(valueString);
+
+                //now the complex math.  Check to see if there is something to print
                 if (complexMathString.Length > 0)
-                {  
+                {
+                    //lets change the color of the text(forground color to something eye catching
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine(complexMathString);
-                    Console.ForegroundColor = startConsoleColor;
-                }
-                if (matchValueString.Length > 0)
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine(matchValueString);
-                    Console.ForegroundColor = startConsoleColor;
+                    //put the color back
+                    Console.ResetColor();
                 }
 
-                if (pauseBetweenCipherData)
-                {                    
-                    Console.Write(Environment.NewLine + "Press a Key to Continue.");
+                //now the match value.  Check to see if there is something to print
+                if (matchValueString.Length > 0)
+                {
+                    //lets change the color of the text(forground color to something eye catching
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine(matchValueString);
+                    //put the color back
+                    Console.ResetColor();
+                }
+
+                //that's all for this cipher and its data, check for a puase if selected as such
+                if (pauseBetweenCipherData == true)
+                {
+                    Console.Write(Environment.NewLine + "Press a Key to Continue");
                     Console.ReadKey();
                 }
             }
-            Console.WriteLine("All Done.  Press a key to exit.");
-            Console.ReadKey();
         }
     }
 }
