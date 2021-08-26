@@ -4,6 +4,12 @@
     <TargetFramework>net5.0</TargetFramework>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Copyright>Copyright (c) 2020 Gematria Tools</Copyright>
+    <Version>0.0.3</Version>
+    <Product>GematriaForTruthBaseSDK</Product>
+    <Description>Base package for "Gematria For Truth" SDK.</Description>
+    <PackageProjectUrl></PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Gematria-For-Truth/GematriaForTruth</RepositoryUrl>
+    <PackageReleaseNotes>Adding support for Gematria SDK</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
