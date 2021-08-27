@@ -132,7 +132,7 @@ namespace GematriaForTruth.API.Factory
 
         public GematriaCipher[] GetEnabledGematriaCiphers()
         {
-            List<GematriaCipher> enabledCiphers = new();
+            List<GematriaCipher> enabledCiphers = new List<GematriaCipher>();
             int displayPriority = 0;
 
             foreach (GematriaCipher cipher in CipherConfig.Instance().ciphers)

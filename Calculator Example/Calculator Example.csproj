@@ -2,14 +2,16 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net48</TargetFramework>
     <RootNamespace>Calculator_Example</RootNamespace>
     <RepositoryUrl />
     <UserSecretsId>a6e5828e-1d58-4f51-81e0-4cde5ec6fcb4</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="GematriaForTruth" Version="0.0.3" />
+    <Reference Include="GematriaForTruth">
+      <HintPath>..\GematriaForTruth\bin\Debug\net48\GematriaForTruth.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

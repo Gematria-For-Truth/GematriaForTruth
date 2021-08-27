@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Reflection;
-using System.Reflection.PortableExecutable;
-using System.Text;
 
 namespace GematriaForTruth.API.Util
 {
@@ -31,7 +27,7 @@ namespace GematriaForTruth.API.Util
         {
             string file = GetNumbericResourceTextFile();
 
-            string[] lines = file.Split(Environment.NewLine);
+            string[] lines = file.Split(Environment.NewLine[0]);
             foreach(string line in lines)
             {
                 string[] pair = line.Split(' ');

@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net48</TargetFramework>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Copyright>Copyright (c) 2020 Gematria Tools</Copyright>
     <Version>0.0.3</Version>
@@ -18,6 +18,10 @@
     <Folder Include="API\Config\" />
     <Folder Include="API\DataStructures\" />
     <Folder Include="API\Util\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Net.Http" />
   </ItemGroup>
 
   <ItemGroup>
