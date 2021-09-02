@@ -165,6 +165,8 @@ namespace Gematria_Calculator
                     Console.ReadKey();
                 }
             }
+            Console.WriteLine("Hit a key to exit.");
+            Console.ReadKey();
         }
     }
 }

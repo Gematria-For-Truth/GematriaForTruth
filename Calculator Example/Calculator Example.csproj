@@ -12,6 +12,9 @@
     <Reference Include="GematriaForTruth">
       <HintPath>..\GematriaForTruth\bin\Debug\net48\GematriaForTruth.dll</HintPath>
     </Reference>
+    <Reference Include="GematriaToolsForTruthAPI">
+      <HintPath>..\..\GematriaToolsForTruthAPI\GematriaToolsForTruthAPI\bin\Debug\GematriaToolsForTruthAPI.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
