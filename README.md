@@ -1,3 +1,4 @@
+![calculator_screenshot](https://user-images.githubusercontent.com/31824477/131841612-fda2f2a1-3a7f-47c5-adcf-4359c6880231.png)
 
 # GematriaForTruth
 Gematria For Truth Base SDK
